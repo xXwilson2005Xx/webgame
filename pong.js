@@ -2,14 +2,15 @@ var myGamePiece;
 
 function startGame() {
     myGameArea.start();
-    myGamePiece = new component(30, 30, "red", 10, 120);
+    player1 = new component(20, 100, "aqua", 10, 120);
+    player2 = new component(20, 100, "aqua", 1170, 120);
 }
 
 var myGameArea = {
-    canvas : document.createElement("canvas"),
+    canvas : document.getElementById("superpongaren"),
     start : function() {
-        this.canvas.width = 480;
-        this.canvas.height = 270;
+        this.canvas.width = 1200;
+        this.canvas.height = 400;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
@@ -47,9 +48,14 @@ function component(width, height, color, x, y) {
 
 function updateGameArea() {
     myGameArea.clear();
-    myGamePiece.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[79]) {myGamePiece.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[76]) {myGamePiece.speedY = 1; }
-    myGamePiece.newPos();    
-    myGamePiece.update();
+    player1.speedY = 0;    
+    if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -1; }
+    if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 1; }
+    player1.newPos();    
+    player1.update();
+    player2.speedY = 0;    
+    if (myGameArea.keys && myGameArea.keys[79]) {player2.speedY = -1; }
+    if (myGameArea.keys && myGameArea.keys[76]) {player2.speedY = 1; }
+    player2.newPos();    
+    player2.update();
 }
