@@ -2,8 +2,8 @@ var myGamePiece;
 
 function startGame() {
     myGameArea.start();
-    player1 = new component(20, 100, "aqua", 10, 120);
-    player2 = new component(20, 100, "aqua", 1170, 120);
+    player1 = new component(10, 100, "aqua", 10, 120);
+    player2 = new component(10, 100, "aqua", 1170, 120);
     gameBall = new component(20, 20, "aqua", 600, 200)
 }
 
@@ -51,20 +51,20 @@ function updateGameArea() {
     myGameArea.clear();
     
     player1.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 1; }
+    if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -2; }
+    if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 2; }
     player1.newPos();    
     player1.update();
 
     player2.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[79]) {player2.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[76]) {player2.speedY = 1; }
+    if (myGameArea.keys && myGameArea.keys[79]) {player2.speedY = -2; }
+    if (myGameArea.keys && myGameArea.keys[76]) {player2.speedY = 2; }
     player2.newPos();    
     player2.update();
 
     gameBall.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[71]) {player2.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[84]) {player2.speedY = 1; }
+    if (myGameArea.keys && myGameArea.keys[71]) {gameBall.speedY = -1; }
+    if (myGameArea.keys && myGameArea.keys[84]) {gameBall.speedY = 1; }
     gameBall.newPos();    
     gameBall.update();
 }
