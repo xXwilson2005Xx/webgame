@@ -10,7 +10,7 @@ var myGameArea = {
     canvas : document.getElementById("superpongaren"),
     start : function() {
         this.canvas.width = 1200;
-        this.canvas.height = 400;
+        this.canvas.height = 500;
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
