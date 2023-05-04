@@ -1,33 +1,55 @@
-let canvas = document.querySelector("canvas");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-canvas.style.width = "100%";
-canvas.style.height = "100%";
+var myGamePiece;
 
-let c = canvas.getContext("2d");
-
-function paintSquare() {
-    // "bollen"
-    const s = 30; // Kvadratens sidlängd
-    c.fillStyle = "aqua";
-    c.fillRect(s*25, s*10, s, s);
-    
-}
-function paintPlayer1() {
-    // "vänster"
-    const s = 30; // Kvadratens sidlängd
-    c.fillStyle = "aqua";
-    c.fillRect(s , s*10 , s, s*8);
-    
-}
-function paintPlayer2() {
-    // "höger"
-    const s = 30; // Kvadratens sidlängd
-    c.fillStyle = "aqua";
-    c.fillRect(s*49,  s*10, s, s*8);
-    
+function startGame() {
+    myGameArea.start();
+    myGamePiece = new component(30, 30, "red", 10, 120);
 }
 
-paintSquare()
-paintPlayer1()
-paintPlayer2()
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.interval = setInterval(updateGameArea, 20);
+        window.addEventListener('keydown', function (e) {
+            myGameArea.keys = (myGameArea.keys || []);
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");
+        })
+        window.addEventListener('keyup', function (e) {
+            myGameArea.keys[e.keyCode] = (e.type == "keydown");            
+        })
+    }, 
+    clear : function(){
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+function component(width, height, color, x, y) {
+    this.gamearea = myGameArea;
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    this.newPos = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;        
+    }    
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    myGamePiece.speedY = 0;    
+    if (myGameArea.keys && myGameArea.keys[79]) {myGamePiece.speedY = -1; }
+    if (myGameArea.keys && myGameArea.keys[76]) {myGamePiece.speedY = 1; }
+    myGamePiece.newPos();    
+    myGamePiece.update();
+}
