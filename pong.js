@@ -52,7 +52,9 @@ function checkBounce() {
   
     if (gameBall.y >= myGameArea.canvas.height - gameBall.height) {
       gameBall.speedY = -gameBall.speedY;
-
+    }
+    if (gameBall.y <= 0) {
+        gameBall.speedY = -gameBall.speedY;
     }
 }
 
