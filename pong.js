@@ -50,21 +50,21 @@ function component(width, height, color, x, y) {
 function updateGameArea() {
     myGameArea.clear();
     
-    player1.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 1; }
+    player1.speedY = 0
+    if (player1.y <= 400) {if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 5; }}    
+    if (player1.y >= 0 ) {if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -5; }}
     player1.newPos();    
     player1.update();
 
     player2.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[79]) {player2.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[76]) {player2.speedY = 1; }
+    if (player2.y <= 400) {if (myGameArea.keys && myGameArea.keys[76]) {player2.speedY = 5; }}
+    if (player2.y >=0 ) {if (myGameArea.keys && myGameArea.keys[79]) {player2.speedY = -5; }}
     player2.newPos();    
     player2.update();
 
     gameBall.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[71]) {player2.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[84]) {player2.speedY = 1; }
+    if (myGameArea.keys && myGameArea.keys[71]) {gameBall.speedY = -2; }
+    if (myGameArea.keys && myGameArea.keys[84]) {gameBall.speedY = 2; }
     gameBall.newPos();    
     gameBall.update();
 }
