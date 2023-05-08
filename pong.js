@@ -2,9 +2,10 @@ var myGamePiece;
 
 function startGame() {
     myGameArea.start();
-    player1 = new component(20, 100, "aqua", 10, 120);
-    player2 = new component(20, 100, "aqua", 1170, 120);
-    gameBall = new component(20, 20, "aqua", 600, 200)
+    //skapar komponenter
+    player1 = new component(10, 100, "aqua", 10, 120, 0, 0);
+    player2 = new component(10, 100, "aqua", 1170, 120, 0, 0);
+    gameBall = new component(20, 20, "aqua", 600, 200, 0, 2)
 }
 
 var myGameArea = {
@@ -13,7 +14,7 @@ var myGameArea = {
         this.canvas.width = 1200;
         this.canvas.height = 500;
         this.context = this.canvas.getContext("2d");
-        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        // document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.interval = setInterval(updateGameArea, 20);
         window.addEventListener('keydown', function (e) {
             myGameArea.keys = (myGameArea.keys || []);
@@ -28,14 +29,14 @@ var myGameArea = {
     }
 }
 
-function component(width, height, color, x, y) {
+function component(width, height, color, x, y, speedX, speedY) {
     this.gamearea = myGameArea;
     this.width = width;
-    this.height = height;
-    this.speedX = 0;
-    this.speedY = 0;    
+    this.height = height;    
     this.x = x;
-    this.y = y;    
+    this.y = y; 
+    this.speedX = speedX;
+    this.speedY = speedY;   
     this.update = function() {
         ctx = myGameArea.context;
         ctx.fillStyle = color;
@@ -47,25 +48,34 @@ function component(width, height, color, x, y) {
     }    
 }
 
+function checkBounce() {
+  
+    if (gameBall.y > myGameArea.height - gameBall.height) {
+      gameBall.speedY = -gameBall.speedY;
+
+    }
+}
+
 function updateGameArea() {
     myGameArea.clear();
     
-    player1.speedY = 0
-    if (player1.y <= 400) {if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 5; }}    
-    if (player1.y >= 0 ) {if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -5; }}
+    player1.speedY = 0;    
+    if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -1; }
+    if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 1; }
     player1.newPos();    
     player1.update();
 
     player2.speedY = 0;    
-    if (player2.y <= 400) {if (myGameArea.keys && myGameArea.keys[76]) {player2.speedY = 5; }}
-    if (player2.y >=0 ) {if (myGameArea.keys && myGameArea.keys[79]) {player2.speedY = -5; }}
+    if (myGameArea.keys && myGameArea.keys[79]) {player2.speedY = -1; }
+    if (myGameArea.keys && myGameArea.keys[76]) {player2.speedY = 1; }
     player2.newPos();    
     player2.update();
 
     gameBall.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[71]) {gameBall.speedY = -2; }
-    if (myGameArea.keys && myGameArea.keys[84]) {gameBall.speedY = 2; }
+    if (myGameArea.keys && myGameArea.keys[71]) {player2.speedY = -1; }
+    if (myGameArea.keys && myGameArea.keys[84]) {player2.speedY = 1; }
     gameBall.newPos();    
     gameBall.update();
+    checkBounce()
 }
 
