@@ -60,6 +60,7 @@ function updateGameArea() {
     myGameArea.clear();
     
     player1.speedY = 0;    
+    
     if (myGameArea.keys && myGameArea.keys[87]) {player1.speedY = -1; }
     if (myGameArea.keys && myGameArea.keys[83]) {player1.speedY = 1; }
     player1.newPos();    
