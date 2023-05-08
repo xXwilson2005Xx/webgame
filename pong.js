@@ -50,7 +50,7 @@ function component(width, height, color, x, y, speedX, speedY) {
 
 function checkBounce() {
   
-    if (gameBall.y > myGameArea.height - gameBall.height) {
+    if (gameBall.y >= myGameArea.canvas.height - gameBall.height) {
       gameBall.speedY = -gameBall.speedY;
 
     }
@@ -70,9 +70,6 @@ function updateGameArea() {
     player2.newPos();    
     player2.update();
 
-    gameBall.speedY = 0;    
-    if (myGameArea.keys && myGameArea.keys[71]) {player2.speedY = -1; }
-    if (myGameArea.keys && myGameArea.keys[84]) {player2.speedY = 1; }
     gameBall.newPos();    
     gameBall.update();
     checkBounce()
