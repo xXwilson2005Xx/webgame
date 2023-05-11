@@ -1,11 +1,12 @@
 var myGamePiece;
 
+
 function startGame() {
     myGameArea.start();
     //skapar komponenter
     player1 = new component(10, 100, "aqua", 10, 120, 0, 0);
     player2 = new component(10, 100, "aqua", 1180, 120, 0, 0);
-    gameBall = new component(20, 20, "aqua", 600, 200, 0, 2)
+    gameBall = new component(20, 20, "aqua", 600, 200, 6, 4)
 }
 
 var myGameArea = {
@@ -56,7 +57,18 @@ function checkBounce() {
     if (gameBall.y <= 0) {
         gameBall.speedY = -gameBall.speedY;
     }
-    if (gameBall.x >= gamearea.canvas.width -20 && gameBall.x < gamearea.canvas.width - 10 && gameBall.y >= player2.y && gameBall.y < player2.y+player2.height )
+    //check that x aligns with player2 (right)
+    if (gameBall.x >= myGameArea.canvas.width - 30 && gameBall.x < myGameArea.canvas.width - 25) {
+        //checks if y aligns with player2
+        if (gameBall.y >= player2.y && gameBall.y < player2.y + player2.height) {gameBall.speedX = -gameBall.speedX;}
+        
+    }
+     //check that x aligns with player1 (left)
+     if (gameBall.x > 25 && gameBall.x <= 30) {
+        //checks if y aligns with player1
+        if (gameBall.y >= player1.y && gameBall.y < player1.y + player1.height) {gameBall.speedX = -gameBall.speedX;}
+        
+    }
 }
 
 function updateGameArea() {
