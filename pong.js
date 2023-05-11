@@ -7,6 +7,8 @@ function startGame() {
     player1 = new component(10, 100, "aqua", 10, 120, 0, 0);
     player2 = new component(10, 100, "aqua", 1180, 120, 0, 0);
     gameBall = new component(20, 20, "aqua", 600, 200, 6, 4)
+    
+    
 }
 
 var myGameArea = {
@@ -64,11 +66,17 @@ function checkBounce() {
         
     }
      //check that x aligns with player1 (left)
-     if (gameBall.x > 25 && gameBall.x <= 30) {
+     if (gameBall.x > 15 && gameBall.x <= 20) {
         //checks if y aligns with player1
         if (gameBall.y >= player1.y && gameBall.y < player1.y + player1.height) {gameBall.speedX = -gameBall.speedX;}
         
     }
+}
+
+function points() {
+    if ( gameBall.x >= myGameArea.width - 20) { points1 += 1 }
+    if ( gameBall.x <= 0) { points2 += 1 }
+    
 }
 
 function updateGameArea() {
@@ -88,5 +96,14 @@ function updateGameArea() {
     gameBall.newPos();    
     gameBall.update();
     checkBounce()
+    points()
 }
 
+let points1 = 0
+    let points2 = 0
+    const element1 = document.getElementById("score1");
+    const element2 = document.getElementById("score2");
+    while (True) {
+        element1.innerHTML = points1;
+        element2.innerHTML = points2;
+    }
