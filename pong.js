@@ -62,12 +62,12 @@ function checkBounce() {
     //check that x aligns with player2 (right)
     if (gameBall.x >= myGameArea.canvas.width - 30 && gameBall.x < myGameArea.canvas.width - 25) {
         //checks if y aligns with player2
-        if (gameBall.y >= player2.y && gameBall.y < player2.y + player2.height) {gameBall.speedX = -gameBall.speedX;}
+        if (gameBall.y + gameBall.height > player2.y && gameBall.y < player2.y + player2.height) {gameBall.speedX = -gameBall.speedX;}
     }
      //check that x aligns with player1 (left)
      if (gameBall.x > 15 && gameBall.x <= 20) {
         //checks if y aligns with player1
-        if (gameBall.y >= player1.y && gameBall.y < player1.y + player1.height) {gameBall.speedX = -gameBall.speedX;}
+        if (gameBall.y + gameBall.height > player1.y && gameBall.y < player1.y + player1.height) {gameBall.speedX = -gameBall.speedX;}
     }
     //check back wall bounce (left)
     if (gameBall.x <= 0) { 
