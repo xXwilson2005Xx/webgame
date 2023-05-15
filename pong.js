@@ -62,21 +62,29 @@ function checkBounce() {
     //check that x aligns with player2 (right)
     if (gameBall.x >= myGameArea.canvas.width - 30 && gameBall.x < myGameArea.canvas.width - 25) {
         //checks if y aligns with player2
-        if (gameBall.y >= player2.y && gameBall.y < player2.y + player2.height) {gameBall.speedX = -gameBall.speedX;}
-        
+        if (gameBall.y + gameBall.height > player2.y && gameBall.y < player2.y + player2.height) {gameBall.speedX = -gameBall.speedX;}
     }
      //check that x aligns with player1 (left)
      if (gameBall.x > 15 && gameBall.x <= 20) {
         //checks if y aligns with player1
-        if (gameBall.y >= player1.y && gameBall.y < player1.y + player1.height) {gameBall.speedX = -gameBall.speedX;}
-        
+        if (gameBall.y + gameBall.height > player1.y && gameBall.y < player1.y + player1.height) {gameBall.speedX = -gameBall.speedX;}
     }
+    //check back wall bounce (left)
+    if (gameBall.x <= 0) { 
+        gameBall.speedX = -gameBall.speedX
+    }
+    //check back wall bounce (right)
+    if (gameBall.x >= myGameArea.width - 10) {
+        gameBall.speedX = -gameBall.speedX
+    }
+    
 }
 
 function points() {
     if ( gameBall.x >= myGameArea.width - 20) { points1 += 1 }
     if ( gameBall.x <= 0) { points2 += 1 }
-    
+    element1.innerHTML = points1;
+    element2.innerHTML = points2;
 }
 
 function updateGameArea() {
@@ -99,11 +107,8 @@ function updateGameArea() {
     points()
 }
 
-let points1 = 0
+    let points1 = 0
     let points2 = 0
     const element1 = document.getElementById("score1");
     const element2 = document.getElementById("score2");
-    while (True) {
-        element1.innerHTML = points1;
-        element2.innerHTML = points2;
-    }
+ 
