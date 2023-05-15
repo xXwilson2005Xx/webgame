@@ -80,12 +80,36 @@ function checkBounce() {
     
 }
 
+let points1 = 0
+let points2 = 0
+let element1 = document.getElementById("score1");
+let element2 = document.getElementById("score2");
+let element3 = document.getElementById("winner")
+
+function checkWinner(points1, points2) {
+    if (points1 === 2) {
+        element3.innerHTML("Player 1 is the winner")
+        //Skriva ut "player1 is winner" över canvasen
+    }
+    if (points2 === 2) {
+        element3.innerHTML("Player 2 is the winner")
+        //Skriva ut "player2 is winner" över canvasen
+        if (myGameArea.keys[13]) {
+            
+        }
+    }
+}
+
+
 function points() {
-    if ( gameBall.x >= myGameArea.width - 20) { points1 += 1 }
+    if ( gameBall.x >= myGameArea.width) { points1 += 1 }
     if ( gameBall.x <= 0) { points2 += 1 }
     element1.innerHTML = points1;
-    element2.innerHTML = points2;
+    element2.innerHTML = points2; 
 }
+
+
+
 
 function updateGameArea() {
     myGameArea.clear();
@@ -105,10 +129,7 @@ function updateGameArea() {
     gameBall.update();
     checkBounce()
     points()
+    checkWinner(points1, points2)
 }
 
-    let points1 = 0
-    let points2 = 0
-    const element1 = document.getElementById("score1");
-    const element2 = document.getElementById("score2");
- 
+
