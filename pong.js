@@ -84,18 +84,33 @@ let points1 = 0
 let points2 = 0
 let element1 = document.getElementById("score1");
 let element2 = document.getElementById("score2");
-let element3 = document.getElementById("winner")
+
+var ctx = canvas.getContext("2d");
+
+
 
 function checkWinner(points1, points2) {
-    if (points1 === 2) {
-        element3.innerHTML("Player 1 is the winner")
-        //Skriva ut "player1 is winner" över canvasen
-    }
-    if (points2 === 2) {
-        element3.innerHTML("Player 2 is the winner")
-        //Skriva ut "player2 is winner" över canvasen
+    if (points1 === 1) {
+        myGameArea.clear()
+        ctx.textAlign = "center";
+        ctx.font = "75px Arial";
+        ctx.fillText("Player 1 is the winner!", 500, 250);
+        ctx.font = "25px Arial"
+        ctx.fillText("Press Enter to play again",500, 400)
         if (myGameArea.keys[13]) {
-            
+            startGame()
+        }
+
+    }
+    if (points2 === 1) {
+        myGameArea.clear()
+        ctx.textAlign = "center";
+        ctx.font = "75px Arial";
+        ctx.fillText("Player 2 is the winner!", 500, 250);
+        ctx.font = "25px Arial"
+        ctx.fillText("Press Enter to play again",500, 400)
+        if (myGameArea.keys[13]) {
+            startGame()
         }
     }
 }
