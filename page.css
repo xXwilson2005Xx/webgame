@@ -1,31 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Bruno+Ace+SC&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Bruno+Ace+SC&display=swap");
 
 body {
-    background: linear-gradient(to top left, rgb(0, 0, 0), rgb(0, 0, 0),
-     rgb(0, 0, 0), rgb(0,255,255), rgb(0, 0, 0), rgb(0, 0, 0), rgb(0, 0, 0), rgb(0, 0, 0));
-  }
+  background: linear-gradient(
+    to top left,
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 255, 255),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0),
+    rgb(0, 0, 0)
+  );
+}
 
-#superpongaren{
-    background-color: rgb(0, 0, 0);
-    border: 10px solid rgb(196, 0, 0);
-    margin-top: 4%;
-    margin-left: 9%;
-  } 
-h1{
+#superpongaren {
+  background-color: rgb(0, 0, 0);
+  border: 10px solid rgb(196, 0, 0);
+  margin-top: 4%;
+  margin-left: 9%;
+}
+h1 {
   color: aqua;
-  font-family: 'Bruno Ace SC', cursive;
+  font-family: "Bruno Ace SC", cursive;
   text-align: center;
 }
 
-.score{
+.score {
   color: red;
   font-size: 20;
 }
 
-#score1, #score2 {
+#score1,
+#score2 {
   color: whitesmoke;
-  font-family: 'Bruno Ace SC', cursive;
+  font-family: "Bruno Ace SC", cursive;
   size: large;
 }
 
