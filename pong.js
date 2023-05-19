@@ -102,7 +102,7 @@ function checkWinner(points1, points2) {
     ctx.font = "75px Arial";
     ctx.fillText("Player 1 is the winner!", 500, 250);
     ctx.font = "25px Arial";
-    ctx.fillText("Press Enter to play again", 500, 400);
+    ctx.fillText("Press Ctrl + R to play again", 500, 400);
     if (myGameArea.keys[13]) {
       startGame();
     }
@@ -113,7 +113,7 @@ function checkWinner(points1, points2) {
     ctx.font = "75px Arial";
     ctx.fillText("Player 2 is the winner!", 500, 250);
     ctx.font = "25px Arial";
-    ctx.fillText("Press Enter to play again", 500, 400);
+    ctx.fillText("Press Ctrl + R to play again", 500, 400);
     if (myGameArea.keys[13]) {
       startGame();
     }
