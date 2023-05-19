@@ -83,7 +83,7 @@ function checkBounce() {
     gameBall.speedX = -gameBall.speedX;
   }
   //check back wall bounce (right)
-  if (gameBall.x >= 1200) {
+  if (gameBall.x >= 1180) {
     gameBall.speedX = -gameBall.speedX;
   }
 }
@@ -96,7 +96,7 @@ let element2 = document.getElementById("score2");
 var ctx = canvas.getContext("2d");
 
 function checkWinner(points1, points2) {
-  if (points1 === 1) {
+  if (points1 === 3) {
     myGameArea.clear();
     ctx.textAlign = "center";
     ctx.font = "75px Arial";
@@ -107,7 +107,7 @@ function checkWinner(points1, points2) {
       startGame();
     }
   }
-  if (points2 === 1) {
+  if (points2 === 3) {
     myGameArea.clear();
     ctx.textAlign = "center";
     ctx.font = "75px Arial";
@@ -121,7 +121,7 @@ function checkWinner(points1, points2) {
 }
 
 function points() {
-  if (gameBall.x >= 1200) {
+  if (gameBall.x >= 1180) {
     points1 += 1;
   }
   if (gameBall.x <= 0) {
